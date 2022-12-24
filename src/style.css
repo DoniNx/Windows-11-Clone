@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+   min-width: 854px;
+   min-height: 480px;
+   overflow: hidden;
+}
+.container{
+   background-image: url("./assets/images/wallpaper.jpg");
+   background-repeat: none;
+   background-size: cover;
+   background-position: bottom;
+}
