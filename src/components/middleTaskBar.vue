@@ -1,9 +1,11 @@
 <script setup>
+
+
 </script>
 
 <template>
   <div class="max-w-max -mr-[5%] flex flex-row place-items-center">
-          <img src="../assets/icons/startIcon.png" class=" hover:bg-slate-700 p-1 rounded-[4px] w-10" alt="Start icon">
+          <img src="../assets/icons/startIcon.png" @click="$emit('toogleStartEvent')"  class=" hover:bg-slate-700 p-1 rounded-[4px] w-10" alt="Start icon">
 
           <button class="rounded-full h-8 px-5 mx-1 space-x-2 bg-slate-700 text-slate-50 text-sm font-mono hover:bg-sky-700 active:bg-sky-700 flex align-middle justify-center place-items-center">
             <font-awesome-icon icon="fa-solid fa-magnifying-glass" />
