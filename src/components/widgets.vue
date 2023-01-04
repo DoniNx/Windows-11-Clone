@@ -1,32 +1,14 @@
 <script setup>
-import { ref } from 'vue'
+import { onBeforeMount, onMounted, ref } from 'vue'
 
 
 
-let arr = ref([
-    {title: "The title", age: 60, date: 12, content: "lorem ipsum"},
-    {title: "The title", age: 60, date: 12, content: "lorem ipsum"},
-    {title: "The title", age: 60, date: 12, content: "lorem ipsum"},
-    {title: "The title", age: 60, date: 12, content: "lorem ipsum"},
-    {title: "The title", age: 60, date: 12, content: "lorem ipsum"},
-    {title: "The title", age: 60, date: 12, content: "lorem ipsum"},
-    {title: "The title", age: 60, date: 12, content: "lorem ipsum"},
-    {title: "The title", age: 60, date: 12, content: "lorem ipsum"},
-    {title: "The title", age: 60, date: 12, content: "lorem ipsum"},
-    {title: "The title", age: 60, date: 12, content: "lorem ipsum"},
-    {title: "The title", age: 60, date: 12, content: "lorem ipsum"},
-    {title: "The title", age: 60, date: 12, content: "lorem ipsum"},
-    {title: "The title", age: 60, date: 12, content: "lorem ipsum"},
-    {title: "The title", age: 60, date: 12, content: "lorem ipsum"},
-    {title: "The title", age: 60, date: 12, content: "lorem ipsum"},
-    {title: "The title", age: 60, date: 12, content: "lorem ipsum"},
-    {title: "The title", age: 60, date: 12, content: "lorem ipsum"},
-    {title: "The title", age: 60, date: 12, content: "lorem ipsum"},
-    {title: "The title", age: 60, date: 12, content: "lorem ipsum"},
-    {title: "The title", age: 60, date: 12, content: "lorem ipsum"},
-    {title: "The title", age: 60, date: 12, content: "lorem ipsum"},
-    {title: "The title", age: 60, date: 12, content: "lorem ipsum"},
-    {title: "The title", age: 60, date: 12, content: "lorem ipsum"}])
+var allProps = defineProps({
+  articles: Array,
+})
+
+
+
 
 
 
@@ -36,8 +18,8 @@ let arr = ref([
 
 
 
-<div class="parent rounded-lg mt-3 ml-2 w-[50%] h-[91vh] overflow-hidden transition-opacity duration-700">
-
+<div class="parent rounded-lg mt-3 ml-2 w-[50%] h-[91vh] overflow-hidden transition-opacity duration-700 bg-gray-500 bg-opacity-70 backdrop-blur-md">
+ 
     <div class="text-zinc-100 flex justify-between px-3 py-4 bg-gray-500 bg-opacity-70 backdrop-blur-md">                   
         <div class="flex space-x-2 px-2 py-1">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 p-2 rounded-sm bg-blue-500">
@@ -61,16 +43,20 @@ let arr = ref([
 
         </div>
     </div>
+    
 
-    <div class="cardsContainer grid grid-cols-2 gap-4 px-16 bg-gray-500 bg-opacity-70 backdrop-blur-md h-full overflow-scroll">
-        <div v-for="item in arr" :key="item.age" class=" col-span-1 rounded-[5px] text-zinc-50 py-1 px-2 bg-gray-800 hover:bg-sky-700 hover:shadow-2xl">
-            <h1 class="text-lg font-bold">{{ item.title }}</h1>
-            <p class="text-red-300">age: {{ item.age }}</p>
-            <p>{{ item.age }}</p>
-            <h5>{{ item.content }}</h5>    
-        </div>
+    <div class="h-[89%] overflow-scroll pr-16 pl-10 grid grid-cols-2 gap-6 pt-10 pb-6">
+            <div v-for="item in articles" :key="item.age" class="select-none flex w-72 h-[300px] overflow-hidden rounded-md bg-zinc-700 hover:bg-slate-800 shadow-md hover:shadow-2xl">
+                
+               <div class="flex flex-col justify-center place-items-center" >
+                <img :src="item.urlToImage" alt="" class="relative top-0 w-full h-[200px] rounded-t-md  ">
+                <p class="text-xs mt-2 ml-2 text-green-500">{{ item.author }} · {{item.source.name  }} </p>
+                <a :href="item.url" target="_blank" class="font-light text-lg text-zinc-100 mt-2 ml-2 mb-8 hover:underline outline-none">{{ item.title }}</a>
+               </div>
+            </div>
 
     </div>
+
 </div>
  
 </template>
