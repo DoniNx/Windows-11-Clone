@@ -15,12 +15,12 @@
             <p>Search</p>
           </button>
 
-          <img src="../assets/icons/instaIcon.webp" class="hover:bg-slate-700 p-1 rounded-[4px]" width="40px" alt="insta icon">
-          <img src="../assets/icons/storeIcon.png" class="hover:bg-slate-700 p-1 rounded-[4px]" width="40px" alt="store icon">
-          <img src="../assets/icons/taskViewIcon.png" class="hover:bg-slate-700 p-1 rounded-[4px]" width="35px" alt="taskview icon">
-          <img src="../assets/icons/notionIcon.png" class="hover:bg-slate-700 p-1 rounded-[4px]" width="40px" alt="notoin icon">
-          <img src="../assets/icons/002-firefox.png" class="hover:bg-slate-700 p-1 rounded-[4px]" width="40px" alt="firefox icon">
-          <img src="../assets/icons/mypcIcon.png" class="hover:bg-slate-700 p-1 rounded-[4px]" width="40px" alt="mypc icon">
+          <img src="../assets/icons/instaIcon.webp" title="instagram" class="hover:bg-slate-700 p-1 rounded-[4px]" width="40px" alt="insta icon">
+          <img src="../assets/icons/storeIcon.png" title="Microsoft store" class="hover:bg-slate-700 p-1 rounded-[4px]" width="40px" alt="store icon">
+          <img src="../assets/icons/taskViewIcon.png" title="Desktop" class="hover:bg-slate-700 p-1 rounded-[4px]" width="35px" alt="taskview icon">
+          <img src="../assets/icons/notionIcon.png" title="Notion" class="hover:bg-slate-700 p-1 rounded-[4px]" width="40px" alt="notoin icon">
+          <img src="../assets/icons/002-firefox.png" title="Firefox" class="hover:bg-slate-700 p-1 rounded-[4px]" width="40px" alt="firefox icon">
+          <img src="../assets/icons/mypcIcon.png" title="My PC" class="hover:bg-slate-700 p-1 rounded-[4px]" width="40px" alt="mypc icon">
         </div>
 </template>
 

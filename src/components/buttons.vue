@@ -9,7 +9,7 @@ import { ref } from 'vue'
 <template>
 
 
-<div class="absolute right-4 bottom-14 w-[26%]  h-[505px] overflow-hidden flex flex-col justify-between">
+<div class="absolute right-4 top-52 w-[26%] h-[505px] overflow-hidden flex flex-col justify-between">
 
 <div class="flex flex-col pt-4 pb-6 px-2  rounded-lg bg-zinc-900 bg-opacity-70 backdrop-blur-lg h-fit  overflow-scroll shadow-xl ">
     <div class="flex flex-row text-zinc-50 text-sm">
@@ -103,7 +103,7 @@ import { ref } from 'vue'
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
   <path fill-rule="evenodd" d="M7.455 2.004a.75.75 0 01.26.77 7 7 0 009.958 7.967.75.75 0 011.067.853A8.5 8.5 0 116.647 1.921a.75.75 0 01.808.083z" clip-rule="evenodd" />
 </svg>
-            </button>   
+          </button>   
 </div>
         
 <div class="flex flex-row justify-between bg-zinc-900/60 backdrop-blur-md  rounded-md border-[1.5px] border-gray-400/20">

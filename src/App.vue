@@ -1,6 +1,7 @@
 <script setup>
 
 import { onBeforeMount, ref } from 'vue'
+import { WEATHER_API_KEY, NEWS_API_KEY } from '../apikeys.js'
 import HelloWorld from './components/HelloWorld.vue'
 import leftTaskBar from './components/leftTaskBar.vue'
 import rightTaskBar from './components/rightTaskBar.vue'
@@ -12,6 +13,8 @@ import ButtonsMenu from './components/buttons.vue'
 import CalendarMenu from './components/calendarMenu.vue'
 import {TransitionRoot, TransitionChild} from '@headlessui/vue'
 
+
+
 let toogleWidgets = ref(false)
 let toogleStart = ref(false)
 let toogleButtons = ref(false)
@@ -20,7 +23,6 @@ let toogleCaledar = ref(false)
 
 
 //News functions
-
 
 let myArticles =ref([]);
 let myWeather =ref({});
@@ -31,22 +33,20 @@ let myWeather =ref({});
 
 
 let desc ='', tempr=0, isFetched = {weather: false, news: false};
-onBeforeMount(()=>{
-    fetch('https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=241f920926d34fbc8debd79c155324d4').then((res)=>res.json()).then((data)=> {
+onBeforeMount(async ()=>{
+    fetch(`https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${NEWS_API_KEY}`).then((res)=>res.json()).then((data)=> {
     myArticles = data.articles 
-    isFetched.news = true })
+    isFetched.news = true
+    })
 
     
- try {
-  fetch('https://api.weatherbit.io/v2.0/current?lat=8.9806&lon=38.7578&key=a1bba541a3e84dee816868bff156695b&include=minutel').then((res)=>res.json()).then((data)=> {
+  fetch(`https://api.weatherbit.io/v2.0/current?lat=8.9806&lon=38.7578&key=${WEATHER_API_KEY}&include=minutel`).then((res)=>res.json()).then((data)=> {
     myWeather = data.data[0]
      desc=myWeather.weather.description;
      tempr=myWeather.temp;
      isFetched.weather = true;
  })
- } catch (error) {
-  console.log("The error ",error)
- }
+
 
 })
 
@@ -87,17 +87,17 @@ onBeforeMount(()=>{
     </TransitionRoot>
     
     <TransitionRoot :show="toogleButtons" 
-    enter="transition transform duration-400 ease-out" 
-                    enter-from="translate-y-8 opacity-20" 
-                    enter-to="-translate-y-0 opacity-100 " 
-                    leave="transition transform duration-200 ease-in" 
-                    leave-from="opacity-100" 
-                    leave-to="opacity-5 0">
+    enter="transition transform duration-100 ease-out" 
+                    enter-from="translate-y-14 opacity-20" 
+                    enter-to="translate-y-0 opacity-100 " 
+                    leave="transition transform duration-100 ease-in" 
+                    leave-from="opacity-100 translate-y-0" 
+                    leave-to="opacity-90 translate-y-56">
       <ButtonsMenu  />
     </TransitionRoot> 
 
     <div class="taskBar absolute bottom-0 w-full min-w-[854px] py-0  bg-slate-900 flex-row inline-flex justify-between place-items-center">
-      <leftTaskBar :description="desc" :tempInC="tempr" @click="toogleWidgets = !toogleWidgets" />
+      <leftTaskBar :description="desc" :tempInC="tempr" :isWeatherFetched="isFetched.weather" @click="toogleWidgets = !toogleWidgets" />
         <middleTaskBar @toogle-start-event="toogleStart = !toogleStart"/>
         <rightTaskBar 
           @toogle-buttons-event="toogleButtons = !toogleButtons"  
