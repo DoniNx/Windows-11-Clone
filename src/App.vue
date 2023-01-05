@@ -1,7 +1,6 @@
 <script setup>
 
 import { onBeforeMount, ref } from 'vue'
-import { WEATHER_API_KEY, NEWS_API_KEY } from '../apikeys.js'
 import HelloWorld from './components/HelloWorld.vue'
 import leftTaskBar from './components/leftTaskBar.vue'
 import rightTaskBar from './components/rightTaskBar.vue'
@@ -23,28 +22,25 @@ let toogleCaledar = ref(false)
 
 
 //News functions
-
 let myArticles =ref([]);
 let myWeather =ref({});
-
- 
-
-
 
 
 let desc ='', tempr=0, isFetched = {weather: false, news: false};
 onBeforeMount(async ()=>{
-    fetch(`https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${NEWS_API_KEY}`).then((res)=>res.json()).then((data)=> {
+    fetch("https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=241f920926d34fbc8debd79c155324d4").then((res)=>res.json()).then((data)=> {
     myArticles = data.articles 
     isFetched.news = true
     })
+    
 
     
-  fetch(`https://api.weatherbit.io/v2.0/current?lat=8.9806&lon=38.7578&key=${WEATHER_API_KEY}&include=minutel`).then((res)=>res.json()).then((data)=> {
-    myWeather = data.data[0]
-     desc=myWeather.weather.description;
-     tempr=myWeather.temp;
-     isFetched.weather = true;
+   fetch("https://api.openweathermap.org/data/2.5/weather?lat=8.9806&lon=38.7578&appid=de88c8fbc80c77a7fad3b13e1477d052").then((res)=>res.json()).then((data)=> {
+    myWeather = data
+    desc=myWeather.weather[0].description;
+    tempr= Math.round(myWeather.main.temp - 273);
+    isFetched.weather = true;
+
  })
 
 
@@ -61,7 +57,7 @@ onBeforeMount(async ()=>{
                     leave="transition transform duration-300 ease-in" 
                     leave-from="opacity-100" 
                     leave-to="-translate-x-72 opacity-80">
-      <widgets :articles="myArticles"/>
+      <widgets :articles="myArticles" :weatherWidget="myWeather"/>
     </TransitionRoot> 
 
     <TransitionRoot :show="toogleStart" 
