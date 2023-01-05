@@ -69,7 +69,7 @@ var allProps = defineProps({
     tempInC: Number,
 })
 
-var desc = "Sunny", weatherIcon = "../src/assets/icons/weather/003-cloudy.png";
+var desc = "Sunny", weatherIcon = "../assets/icons/weather/003-cloudy.png";
 
 
 
